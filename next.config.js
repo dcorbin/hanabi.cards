@@ -3,8 +3,6 @@
 require("dotenv").config();
 
 const webpack = require("webpack");
-const nextSourceMaps = require("@zeit/next-source-maps")();
-const optimizedImages = require("next-optimized-images");
 const nextOffline = require("next-offline");
 const withPlugins = require("next-compose-plugins");
 
@@ -31,16 +29,6 @@ const config = [
 
       return config;
     },
-  },
-];
-
-const sourceMapsConfig = [nextSourceMaps];
-
-const optimizedImagesConfig = [
-  optimizedImages,
-  {
-    optimizeImagesInDev: true,
-    responsive: {},
   },
 ];
 
@@ -75,4 +63,4 @@ const offlineConfig = [
   },
 ];
 
-module.exports = withPlugins([config, sourceMapsConfig, offlineConfig, optimizedImagesConfig]);
+module.exports = withPlugins([config, offlineConfig]);
